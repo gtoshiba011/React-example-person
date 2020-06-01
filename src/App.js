@@ -1,9 +1,14 @@
 import React, { Component } from "react";
 import "./App.css";
 import Person from "./Person/Person";
-import styled from "styled-components";
+
+// method 1: Radium
 // import Radium, { StyleRoot } from "radium";
 
+// method 2: styled-components
+// import styled from "styled-components";
+
+// method 2: styled-components
 const StyledButton = styled.button`
   background-color: ${(props) => (props.alt === "true" ? "red" : "green")};
   color: white;
@@ -61,6 +66,7 @@ class App extends Component {
   };
 
   render() {
+    // method 1: Radium
     // const style = {
     //   backgroundColor: "green",
     //   color: "white",
@@ -90,6 +96,7 @@ class App extends Component {
         </div>
       );
 
+      // method 1: Radium
       // style.backgroundColor = "red";
       // style[":hover"] = {
       //   backgroundColor: "salmon",
@@ -105,7 +112,7 @@ class App extends Component {
       classes.push("bold");
     }
 
-    // using styled-components
+    // method 2: styled-components
     return (
       <div className="App">
         <h1>Hi, I'm a React App</h1>
@@ -120,7 +127,8 @@ class App extends Component {
       </div>
     );
 
-    // using Radium: wrap by <StyleRoot> when return in App
+    // method 1: Radium
+    // wrap by <StyleRoot> when return in App
     // return (
     //   <StyleRoot>
     //     <div className="App">
@@ -138,4 +146,5 @@ class App extends Component {
 }
 
 export default App;
+// method 1: Radium
 // export default Radium(App);
