@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./App.css";
+import appCss from "./App.css";
 import Person from "./Person/Person";
 
 // method 1: Radium
@@ -7,21 +7,20 @@ import Person from "./Person/Person";
 
 // method 2: styled-components
 // import styled from "styled-components";
+// const StyledButton = styled.button`
+//   background-color: ${(props) => (props.alt === "true" ? "red" : "green")};
+//   color: white;
+//   font: inherit;
+//   border: 1px solid blue;
+//   padding: 8px;
+//   cursor: pointer;
 
-// method 2: styled-components
-const StyledButton = styled.button`
-  background-color: ${(props) => (props.alt === "true" ? "red" : "green")};
-  color: white;
-  font: inherit;
-  border: 1px solid blue;
-  padding: 8px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: ${(props) => (props.alt === "true" ? "salmon" : "lightgreen")};
-    color: black;
-  }
-`;
+//   &:hover {
+//     background-color: ${(props) =>
+//       props.alt === "true" ? "salmon" : "lightgreen"};
+//     color: black;
+//   }
+// `;
 
 class App extends Component {
   state = {
@@ -80,6 +79,10 @@ class App extends Component {
     //   },
     // };
 
+    // method 3: CSS module
+    let btnClass = "";
+    // let btnClass = [appCss.Button];
+
     let persons = null;
     if (this.state.showPersons) {
       persons = (
@@ -96,6 +99,10 @@ class App extends Component {
         </div>
       );
 
+      // method 3: CSS module
+      btnClass = appCss.Red;
+      // btnClass.push(appCss.Red);
+
       // method 1: Radium
       // style.backgroundColor = "red";
       // style[":hover"] = {
@@ -105,27 +112,47 @@ class App extends Component {
     }
 
     let classes = [];
+    // method 3: CSS module
     if (this.state.persons.length <= 2) {
-      classes.push("red");
+      classes.push(appCss.red);
     }
     if (this.state.persons.length <= 1) {
-      classes.push("bold");
+      classes.push(appCss.bold);
     }
+    // method 1 & 2
+    // if (this.state.persons.length <= 2) {
+    //   classes.push("red");
+    // }
+    // if (this.state.persons.length <= 1) {
+    //   classes.push("bold");
+    // }
 
-    // method 2: styled-components
+    // method 3: CSS module
     return (
-      <div className="App">
+      <div className={appCss.App}>
         <h1>Hi, I'm a React App</h1>
         <p className={classes.join(" ")}>This is really working!</p>
-        <StyledButton
-          alt={this.state.showPersons.toString()}
-          onClick={this.togglePersonsHandler}
-        >
+        <button className={btnClass} onClick={this.togglePersonsHandler}>
           Show Persons
-        </StyledButton>
+        </button>
         {persons}
       </div>
     );
+
+    // method 2: styled-components
+    // return (
+    //   <div className="App">
+    //     <h1>Hi, I'm a React App</h1>
+    //     <p className={classes.join(" ")}>This is really working!</p>
+    //     <StyledButton
+    //       alt={this.state.showPersons.toString()}
+    //       onClick={this.togglePersonsHandler}
+    //     >
+    //       Show Persons
+    //     </StyledButton>
+    //     {persons}
+    //   </div>
+    // );
 
     // method 1: Radium
     // wrap by <StyleRoot> when return in App
