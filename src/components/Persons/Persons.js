@@ -7,9 +7,11 @@ class Persons extends Component {
   //   return state;
   // }
 
-  shouldComponentUpdate() {
+  shouldComponentUpdate(nextProps, nextState) {
     console.log("[Persons] shouldComponentUpdate");
-    return true;
+    // props here are Array, i.e., an Object
+    // so compare pointer here...
+    return nextProps.persons !== this.props.persons;
   }
 
   getSnapshotBeforeUpdate(prevProps, prevState) {
