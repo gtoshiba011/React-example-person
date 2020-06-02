@@ -11,7 +11,17 @@ class Persons extends Component {
     console.log("[Persons] shouldComponentUpdate");
     // props here are Array, i.e., an Object
     // so compare pointer here...
-    return nextProps.persons !== this.props.persons;
+    if (
+      nextProps.persons !== this.props.persons ||
+      nextProps.clicked !== this.props.clicked ||
+      nextProps.changed !== this.props.changed
+    ) {
+      console.log("[Persons] should update");
+      return true;
+    } else {
+      console.log("[Persons] stop update");
+      return false;
+    }
   }
 
   getSnapshotBeforeUpdate(prevProps, prevState) {

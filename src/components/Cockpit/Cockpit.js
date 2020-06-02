@@ -15,12 +15,12 @@ const Cockpit = (props) => {
   }, []);
 
   useEffect(() => {
-    console.log("[Cockpit] 2nd useEffect [props.persons]");
+    console.log("[Cockpit] 2nd useEffect [props.personsLength]");
 
     return () => {
       console.log("[Cockpit] clean up work in 2nd useEffect [props.persons]");
     };
-  }, [props.persons]);
+  }, [props.personsLength]);
 
   useEffect(() => {
     console.log("[Cockpit] 3rd useEffect <empty>");
@@ -38,10 +38,10 @@ const Cockpit = (props) => {
     // btnClass.push(appCss.Red);// method 3: CSS module
   }
 
-  if (props.persons.length <= 2) {
+  if (props.personsLength <= 2) {
     classes.push(cockpitCss.red);
   }
-  if (props.persons.length <= 1) {
+  if (props.personsLength <= 1) {
     classes.push(cockpitCss.bold);
   }
   return (
@@ -55,4 +55,5 @@ const Cockpit = (props) => {
   );
 };
 
-export default Cockpit;
+// export default Cockpit;
+export default React.memo(Cockpit);

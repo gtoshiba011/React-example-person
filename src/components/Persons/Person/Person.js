@@ -29,7 +29,9 @@ class Person extends Component {
 
     // method 3: CSS module
     return (
-      <div className={personCss.Person}>
+      // <div className={personCss.Person}>
+      // </div>
+      <React.Fragment className={personCss.Person}>
         <p onClick={this.props.clicked}>
           I'm {this.props.name} and I am {this.props.age} years old!
         </p>
@@ -39,7 +41,7 @@ class Person extends Component {
           onChange={this.props.changed}
           defaultValue={this.props.name}
         />
-      </div>
+        </React.Fragment>
     );
 
     // method 2: styled-components
