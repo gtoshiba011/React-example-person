@@ -1,5 +1,4 @@
-import React from "react";
-
+import React, { Component } from "react";
 import personCss from "./Person.css";
 
 // method 2: styled-components
@@ -18,52 +17,58 @@ import personCss from "./Person.css";
 //   }
 // `;
 
-const Person = (props) => {
-  // section 6: React debug
-  // const rnd = Math.random();
-  // if (rnd > 0.99) {
-  //   throw new Error("Something went wrong");
-  // }
+class Person extends Component {
+  render() {
+    // section 6: React debug
+    // const rnd = Math.random();
+    // if (rnd > 0.99) {
+    //   throw new Error("Something went wrong");
+    // }
 
-  console.log("[Person] render");
+    console.log("[Person] render");
 
-  // method 3: CSS module
-  return (
-    <div className={personCss.Person}>
-      <p onClick={props.clicked}>
-        I'm {props.name} and I am {props.age} years old!
-      </p>
-      <p>{props.children}</p>
-      <input type="text" onChange={props.changed} defaultValue={props.name} />
-    </div>
-  );
+    // method 3: CSS module
+    return (
+      <div className={personCss.Person}>
+        <p onClick={this.props.clicked}>
+          I'm {this.props.name} and I am {this.props.age} years old!
+        </p>
+        <p>{this.props.children}</p>
+        <input
+          type="text"
+          onChange={this.props.changed}
+          defaultValue={this.props.name}
+        />
+      </div>
+    );
 
-  // method 2: styled-components
-  // return (
-  //   <StyledDiv>
-  //     <p onClick={props.clicked}>
-  //       I'm {props.name} and I am {props.age} years old!
-  //     </p>
-  //     <p>{props.children}</p>
-  //     <input type="text" onChange={props.changed} defaultValue={props.name} />
-  //   </StyledDiv>
-  // );
+    // method 2: styled-components
+    // return (
+    //   <StyledDiv>
+    //     <p onClick={props.clicked}>
+    //       I'm {props.name} and I am {props.age} years old!
+    //     </p>
+    //     <p>{props.children}</p>
+    //     <input type="text" onChange={props.changed} defaultValue={props.name} />
+    //   </StyledDiv>
+    // );
 
-  // method 1: Radium
-  // const style = {
-  //   "@media (min-width: 500px)": {
-  //     width: "450px",
-  //   },
-  // };
-  // return (
-  //   <div className="Person" style={style}>
-  //     <p onClick={props.clicked}>
-  //       I'm {props.name} and I am {props.age} years old!
-  //     </p>
-  //     <p>{props.children}</p>
-  //     <input type="text" onChange={props.changed} defaultValue={props.name} />
-  //   </div>
-  // );
-};
+    // method 1: Radium
+    // const style = {
+    //   "@media (min-width: 500px)": {
+    //     width: "450px",
+    //   },
+    // };
+    // return (
+    //   <div className="Person" style={style}>
+    //     <p onClick={props.clicked}>
+    //       I'm {props.name} and I am {props.age} years old!
+    //     </p>
+    //     <p>{props.children}</p>
+    //     <input type="text" onChange={props.changed} defaultValue={props.name} />
+    //   </div>
+    // );
+  }
+}
 
 export default Person;
