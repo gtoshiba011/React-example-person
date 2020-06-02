@@ -18,7 +18,7 @@ import personCss from "./Person.css";
 //   }
 // `;
 
-const person = (props) => {
+const Person = (props) => {
   // section 6: React debug
   const rnd = Math.random();
   if (rnd > 0.99) {
@@ -64,4 +64,4 @@ const person = (props) => {
   // );
 };
 
-export default person;
+export default Person;

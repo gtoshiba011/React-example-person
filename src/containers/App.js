@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import appCss from "./App.css";
 import Persons from "../components/Persons/Persons";
+import Cockpit from "../components/Cockpit/Cockpit";
 
 // method 1: Radium
 // import Radium, { StyleRoot } from "radium";
@@ -65,27 +66,16 @@ class App extends Component {
   };
 
   render() {
-    
-    // method 3: CSS module
-    let btnClass = "";
-    // let btnClass = [appCss.Button];
-    
     let persons = null;
     if (this.state.showPersons) {
       persons = (
-        <div>
-          <Persons
-            persons={this.state.persons}
-            doDeletePerson={this.deletePersonHandler}
-            doNameChanged={this.nameChangedHandler}
-            />
-        </div>
+        <Persons
+          persons={this.state.persons}
+          doDeletePerson={this.deletePersonHandler}
+          doNameChanged={this.nameChangedHandler}
+        />
       );
-      
-      // method 3: CSS module
-      btnClass = appCss.Red;
-      // btnClass.push(appCss.Red);
-      
+
       // method 1: Radium
       // const style = {
       //   backgroundColor: "green",
@@ -106,21 +96,13 @@ class App extends Component {
       // };
     }
 
-    let classes = [];
-    // method 3: CSS module
-    if (this.state.persons.length <= 2) {
-      classes.push(appCss.red);
-    }
-    if (this.state.persons.length <= 1) {
-      classes.push(appCss.bold);
-    }
     return (
       <div className={appCss.App}>
-        <h1>Hi, I'm a React App</h1>
-        <p className={classes.join(" ")}>This is really working!</p>
-        <button className={btnClass} onClick={this.togglePersonsHandler}>
-          Show Persons
-        </button>
+        <Cockpit
+          showPersons={this.state.showPersons}
+          persons={this.state.persons}
+          doTogglePerson={this.togglePersonsHandler}
+        />
         {persons}
       </div>
     );
