@@ -28,7 +28,7 @@ const person = (props) => {
   // method 3: CSS module
   return (
     <div className={personCss.Person}>
-      <p onClick={props.click}>
+      <p onClick={props.clicked}>
         I'm {props.name} and I am {props.age} years old!
       </p>
       <p>{props.children}</p>
@@ -39,7 +39,7 @@ const person = (props) => {
   // method 2: styled-components
   // return (
   //   <StyledDiv>
-  //     <p onClick={props.click}>
+  //     <p onClick={props.clicked}>
   //       I'm {props.name} and I am {props.age} years old!
   //     </p>
   //     <p>{props.children}</p>
@@ -55,7 +55,7 @@ const person = (props) => {
   // };
   // return (
   //   <div className="Person" style={style}>
-  //     <p onClick={props.click}>
+  //     <p onClick={props.clicked}>
   //       I'm {props.name} and I am {props.age} years old!
   //     </p>
   //     <p>{props.children}</p>

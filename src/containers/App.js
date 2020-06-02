@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import appCss from "./App.css";
-import Person from "../components/Persons/Person/Person";
-import ErrorBoundary from "../components/ErrorBoundary.js/ErrorBoundary";
+import Persons from "../components/Persons/Persons";
 
 // method 1: Radium
 // import Radium, { StyleRoot } from "radium";
@@ -66,46 +65,40 @@ class App extends Component {
   };
 
   render() {
-    // method 1: Radium
-    // const style = {
-    //   backgroundColor: "green",
-    //   color: "white",
-    //   font: "inherit",
-    //   border: "1px solid blue",
-    //   padding: "8px",
-    //   cursor: "pointer",
-    //   ":hover": {
-    //     backgroundColor: "lightgreen",
-    //     color: "black",
-    //   },
-    // };
-
+    
     // method 3: CSS module
     let btnClass = "";
     // let btnClass = [appCss.Button];
-
+    
     let persons = null;
     if (this.state.showPersons) {
       persons = (
         <div>
-          {this.state.persons.map((person, index) => (
-            <ErrorBoundary key={person.id}>
-              <Person
-                name={person.name}
-                age={person.age}
-                click={() => this.deletePersonHandler(index)}
-                changed={(event) => this.nameChangedHandler(event, person.id)}
-              />
-            </ErrorBoundary>
-          ))}
+          <Persons
+            persons={this.state.persons}
+            doDeletePerson={this.deletePersonHandler}
+            doNameChanged={this.nameChangedHandler}
+            />
         </div>
       );
-
+      
       // method 3: CSS module
       btnClass = appCss.Red;
       // btnClass.push(appCss.Red);
-
+      
       // method 1: Radium
+      // const style = {
+      //   backgroundColor: "green",
+      //   color: "white",
+      //   font: "inherit",
+      //   border: "1px solid blue",
+      //   padding: "8px",
+      //   cursor: "pointer",
+      //   ":hover": {
+      //     backgroundColor: "lightgreen",
+      //     color: "black",
+      //   },
+      // };
       // style.backgroundColor = "red";
       // style[":hover"] = {
       //   backgroundColor: "salmon",
@@ -121,15 +114,6 @@ class App extends Component {
     if (this.state.persons.length <= 1) {
       classes.push(appCss.bold);
     }
-    // method 1 & 2
-    // if (this.state.persons.length <= 2) {
-    //   classes.push("red");
-    // }
-    // if (this.state.persons.length <= 1) {
-    //   classes.push("bold");
-    // }
-
-    // method 3: CSS module
     return (
       <div className={appCss.App}>
         <h1>Hi, I'm a React App</h1>
@@ -140,6 +124,14 @@ class App extends Component {
         {persons}
       </div>
     );
+
+    // method 1 & 2
+    // if (this.state.persons.length <= 2) {
+    //   classes.push("red");
+    // }
+    // if (this.state.persons.length <= 1) {
+    //   classes.push("bold");
+    // }
 
     // method 2: styled-components
     // return (
