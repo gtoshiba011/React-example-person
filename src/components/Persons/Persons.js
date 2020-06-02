@@ -2,6 +2,7 @@ import React from "react";
 import Person from "./Person/Person";
 
 const Persons = ({ persons, doDeletePerson, doNameChanged }) => {
+  console.log("[Persons] render");
   return persons.map((person, index) => (
     <Person
       key={person.id}

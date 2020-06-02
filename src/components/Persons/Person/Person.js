@@ -20,10 +20,12 @@ import personCss from "./Person.css";
 
 const Person = (props) => {
   // section 6: React debug
-  const rnd = Math.random();
-  if (rnd > 0.99) {
-    throw new Error("Something went wrong");
-  }
+  // const rnd = Math.random();
+  // if (rnd > 0.99) {
+  //   throw new Error("Something went wrong");
+  // }
+
+  console.log("[Person] render");
 
   // method 3: CSS module
   return (
