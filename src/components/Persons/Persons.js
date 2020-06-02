@@ -21,11 +21,14 @@ class Persons extends Component {
     console.log("[Persons] componentDidUpdate", snapshot.message);
   }
 
+  componentWillUnmount() {
+    console.log("[Persons] componentWillUnmount");
+  }
+
   render() {
     console.log("[Persons] render");
     const { persons, doDeletePerson, doNameChanged } = this.props;
     return persons.map((person, index) => {
-      
       return (
         <Person
           key={person.id}

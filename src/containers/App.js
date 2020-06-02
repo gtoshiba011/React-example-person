@@ -37,6 +37,7 @@ class App extends Component {
     ],
     otherState: "some other value",
     showPersons: false,
+    showCockpit: true,
   };
 
   // ### rare used ###
@@ -134,12 +135,21 @@ class App extends Component {
 
     return (
       <div className={appCss.App}>
-        <Cockpit
-          title={this.props.title}
-          showPersons={this.state.showPersons}
-          persons={this.state.persons}
-          doTogglePerson={this.togglePersonsHandler}
-        />
+        <button
+          onClick={() => {
+            this.setState({ showCockpit: false });
+          }}
+        >
+          remove Cockpit
+        </button>
+        {this.state.showCockpit ? (
+          <Cockpit
+            title={this.props.title}
+            showPersons={this.state.showPersons}
+            persons={this.state.persons}
+            doTogglePerson={this.togglePersonsHandler}
+          />
+        ) : null}
         {persons}
       </div>
     );
